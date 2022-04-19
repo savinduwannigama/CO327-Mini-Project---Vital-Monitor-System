@@ -76,7 +76,7 @@ public class TCPConnection implements Runnable{
 
     }
 
-
+    // implementing the run() method inherited from the Runnable interface
     @Override
     public void run() {
         this.createTCPConnection();
