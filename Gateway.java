@@ -19,11 +19,13 @@ public class Gateway {
 
         // create a datagram socket to receive broadcast messages
         DatagramSocket recvSocket = createRecvSocket(UDP_RCV_PORT);
-
+        System.out.println("Gateway Running listening to broadcast port 6000 ...");
         // keep receiving broadcast messages and create TCP connections with monitors
         while (true) {
             // Following methods waits for a new UDP packet
+            // System.out.println('1');
             DatagramPacket recvPacket = recvPacket(recvSocket);
+            // System.out.println('2');
 
             // reading the monitor onject from the received byte stream
             Monitor monitor = getMonitor(recvPacket);

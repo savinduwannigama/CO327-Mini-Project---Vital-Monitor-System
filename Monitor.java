@@ -54,7 +54,7 @@ public class Monitor implements Serializable, Runnable {
 
             while (true) {
                 //Receive the data in small chunks and retransmit it
-                System.out.println("sending data  to the gateway");
+                System.out.println("sending data  to the gateway\n");
                 String message = "Hello from Vital Monitor: " + this.monitorID;
                 //Send data
                 out = new PrintWriter(clientSocket.getOutputStream(), true);

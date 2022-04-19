@@ -33,11 +33,11 @@ public class TCPConnection implements Runnable{
             // create a client socket to connect to the monitor
             Socket clientSocket = new Socket(this.ip, this.port);
 
-            // decalre streams to send and receive data
-            OutputStream os = clientSocket.getOutputStream();
-            OutputStreamWriter osw = new OutputStreamWriter(os);
-            osw.write("Requesting data from " + this.monitorID + "\n");
-            osw.flush();    // request sent
+            // // decalre streams to send and receive data
+            // OutputStream os = clientSocket.getOutputStream();
+            // OutputStreamWriter osw = new OutputStreamWriter(os);
+            // osw.write("Requesting data from " + this.monitorID + "\n");
+            // osw.flush();    // request sent
 
             // declaring input stream
             InputStream is = clientSocket.getInputStream();
