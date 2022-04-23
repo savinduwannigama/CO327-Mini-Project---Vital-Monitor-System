@@ -79,6 +79,8 @@ public class TCPConnection implements Runnable{
             // close the socket
             clientSocket.close();
 
+            // will exit from the thread here after
+
         } catch (Exception e) {
             System.out.println("Exception in thread: " + Thread.currentThread().getId());
             e.printStackTrace();

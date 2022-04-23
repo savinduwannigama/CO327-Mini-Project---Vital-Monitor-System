@@ -56,12 +56,17 @@ public class Gateway {
     }
 
     /**
-     * This method willbe called my a TCPConnection thread during closing a TCP connection.
+     * This method will be called my a TCPConnection thread during closing a TCP connection.
      * This static class is synchronized because it maybe accessed by multiple threads simultaneously.
      *  */ 
     public static synchronized void removeMonitorIDfromList(InetAddress ipAddress, int port) {
-        rcvdMonitors.remove(ipAddress + ":" + port);
-        System.out.println("Removed monitor from list --> " + ipAddress + ":" + port);
+        
+        try {
+            rcvdMonitors.remove(ipAddress + ":" + port);
+            System.out.println("Removed monitor from list --> " + ipAddress + ":" + port);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // this methods gets the monitor object from the data stream received
