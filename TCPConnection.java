@@ -73,6 +73,9 @@ public class TCPConnection implements Runnable{
                 buffer.delete(0, buffer.length());
             }
 
+            // Removing the monitor from the static ArrayList inside the Gateway class
+            Gateway.removeMonitorIDfromList(this.ip, this.port);
+
             // close the socket
             clientSocket.close();
 

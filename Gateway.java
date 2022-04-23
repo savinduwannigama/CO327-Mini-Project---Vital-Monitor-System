@@ -55,6 +55,11 @@ public class Gateway {
 
     }
 
+    public static void removeMonitorIDfromList(InetAddress ipAddress, int port) {
+        rcvdMonitors.remove(ipAddress + ":" + port);
+        System.out.println("Removed monitor from list --> " + ipAddress + ":" + port);
+    }
+
     // this methods gets the monitor object from the data stream received
     private static Monitor getMonitor(DatagramPacket recvPacket) {
         Monitor monitor = null;
