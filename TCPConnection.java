@@ -49,14 +49,20 @@ public class TCPConnection implements Runnable{
             // keep reading data from the monitor
             while (true) {
                 // read data from the monitor
-                int data = isr.read();
-                while (data != '\n') {
+                int data = isr.read();  // will return -1 when the TCP connection is disconnected
+                while (data != '\n' && data != -1) {
                     buffer.append((char) data);
                     data = isr.read();
                 }
 
                 // break if the monitor sends "end"
                 if (buffer.toString().equals("end")) {
+                    break;
+                }
+
+                // Exiting the loop and closing the thread in the case of TCP connection getting disconnected
+                if(data == -1) {
+                    System.out.println("TCP connection disconnected on thread:" + Thread.currentThread().getId());
                     break;
                 }
 
@@ -71,6 +77,7 @@ public class TCPConnection implements Runnable{
             clientSocket.close();
 
         } catch (Exception e) {
+            System.out.println("Exception in thread: " + Thread.currentThread().getId());
             e.printStackTrace();
         }
 
